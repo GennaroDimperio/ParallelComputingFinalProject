@@ -11,12 +11,12 @@ La funzione sequenziale dell'algoritmo K-means è stata implementata utilizzando
 # Implementazione Parallela con CUDA
 L'implementazione parallela è stata realizzata utilizzando la libreria CUDA per sfruttare la potenza di calcolo delle GPU. Il codice CUDA è composto da due kernel principali:
 
-# Kernel di Assegnazione dei Cluster (kmeans_kernel):
-Calcola la distanza tra ciascun punto e tutti i centroidi.
+# Kernel di Assegnazione dei Cluster 
+(kmeans_kernel): calcola la distanza tra ciascun punto e tutti i centroidi.
 Assegna il punto al cluster più vicino.
 
-# Kernel di Aggiornamento dei Centroidi (update_centers_kernel):
-Calcola la media delle caratteristiche per i punti assegnati a ciascun cluster.
+# Kernel di Aggiornamento dei Centroidi 
+(update_centers_kernel): calcola la media delle caratteristiche per i punti assegnati a ciascun cluster.
 Aggiorna il centroide di ciascun cluster con la media calcolata.
 
 In entrambi i kernel, sono state adottate pratiche per evitare race conditions durante l'aggiornamento dei risultati.
