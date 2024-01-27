@@ -1,4 +1,4 @@
-# Relazione sul Progetto: Implementazione Parallela di K-means tramite CUDA
+# Implementazione Parallela di K-means tramite CUDA
 # Introduzione
 Il progetto si propone di implementare una versione parallela dell'algoritmo K-means utilizzando la tecnologia CUDA. L'obiettivo è confrontare le prestazioni dell'algoritmo rispetto alla sua controparte sequenziale, sfruttando la potenza di calcolo parallelo delle GPU. L'ambiente di sviluppo principale è stato "Google Colab" che permette di sfruttare le risorse di accelerazione grafica messe a disposizione.
 
