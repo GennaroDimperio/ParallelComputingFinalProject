@@ -93,7 +93,7 @@ cuda_kernel = """
 """
 
 def kmeans_parallel(X, n_clusters, max_iter=200):
-    # Compila i kernel CUDA
+    # Compilazione del kernel CUDA
     mod = SourceModule(cuda_kernel)
     kmeans_kernel_func = mod.get_function("kmeans_kernel")
     update_centers_kernel_func = mod.get_function("update_centers_kernel")
