@@ -126,7 +126,10 @@ def kmeans_parallel(X, n_clusters, max_iter=200):
 
         # Esecuzione del kernel CUDA per aggiornare i centroidi
         update_centers_kernel_func(X_gpu, labels_gpu, np.int32(n_points), np.int32(n_clusters), np.int32(n_features), new_centers_gpu, block=block, grid=grid)
-
+        
+        # Sincronizzazione CUDA
+        cuda.Context.synchronize()
+        
         # Trasferimento dei risultati dalla GPU alla CPU
         new_centers = new_centers_gpu.get()
 
