@@ -22,6 +22,7 @@ Aggiorna il centroide di ciascun cluster con la media calcolata.
 In entrambi i kernel, sono state adottate pratiche per evitare race conditions durante l'aggiornamento dei risultati.
 
 # Risultati e Confronto
+Questo progetto è stato sperimentato su Google Colab, un ambiente di sviluppo basato su cloud, per sfruttare le risorse di elaborazione parallela dalla GPU installando i pacchetti necessari mediante i comandi "!pip install chainer" e "!pip install pycuda".
 L'implementazione parallela di K-means mediante CUDA ha dimostrato un notevole miglioramento delle prestazioni rispetto alla controparte sequenziale. L'analisi dei risultati evidenzia uno speedup considerevole, con il tempo di esecuzione del codice parallelo costantemente prossimo a 0.08 secondi (per 100.000 punti).
 Tuttavia è importante notare che il tempo di esecuzione della funzione sequenziale ottenuto con lo stesso numero di punti è un po' variabile, oscillando tra il secondo e i decimi di secondo.
 
