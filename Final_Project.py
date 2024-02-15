@@ -32,7 +32,6 @@ def kmeans_sequential(X, n_clusters, max_iter=200):
 
 # Definizione del kernel CUDA
 cuda_kernel = """
-  // Assegnazione di cluster ai punti
   __global__ void kmeans_kernel(float* X, float* centers, int* labels, int n_points, int n_clusters, int n_features) {
     // Calcolo dell'ID del thread
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
