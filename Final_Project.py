@@ -32,6 +32,7 @@ def kmeans_sequential(X, n_clusters, max_iter=200):
 
 # Definizione del kernel CUDA
 cuda_kernel = """
+  // Assegnazione di cluster ai punti
   __global__ void kmeans_kernel(float* X, float* centers, int* labels, int n_points, int n_clusters, int n_features) {
     // Calcolo dell'ID del thread
     int tid = blockIdx.x * blockDim.x + threadIdx.x;
@@ -92,7 +93,7 @@ cuda_kernel = """
 """
 
 def kmeans_parallel(X, n_clusters, max_iter=200):
-    # Compilazione del kernel CUDA
+    # Compila i kernel CUDA
     mod = SourceModule(cuda_kernel)
     kmeans_kernel_func = mod.get_function("kmeans_kernel")
     update_centers_kernel_func = mod.get_function("update_centers_kernel")
@@ -125,10 +126,10 @@ def kmeans_parallel(X, n_clusters, max_iter=200):
 
         # Esecuzione del kernel CUDA per aggiornare i centroidi
         update_centers_kernel_func(X_gpu, labels_gpu, np.int32(n_points), np.int32(n_clusters), np.int32(n_features), new_centers_gpu, block=block, grid=grid)
-        
+
         # Sincronizzazione CUDA
         cuda.Context.synchronize()
-        
+
         # Trasferimento dei risultati dalla GPU alla CPU
         new_centers = new_centers_gpu.get()
 
